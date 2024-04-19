@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Carrito de Compras</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .bgPink {
+            background-color: #f477d2;
+        }
+        .btnCerrarSesion {
+            background-color: #ed71c2;
+            color: #000000;
+            border-color: #f477d2;
+            transition: box-shadow 0.3s ease;
+            box-shadow: 3px 3px 6px #dc13a6;
+        }
+        .btnVaciarCarrito {
+            background-color: #ed71c2;
+            color: #000000;
+            border-color: #f477d2;
+            transition: box-shadow 0.3s ease;
+            box-shadow: 3px 3px 6px #f477d2;
+        }
+        .btnAgregarCarrito {
+            background-color: #ed71c2;
+            color: #000000;
+            border-color: #f477d2;
+            transition: box-shadow 0.3s ease;
+            box-shadow: 3px 3px 6px #f477d2;
+        }
+        .btnEliminar {
+            background-color: #ed71c2;
+            color: #000000;
+            border-color: #f477d2;
+            transition: box-shadow 0.3s ease;
+            box-shadow: 3px 3px 6px #f477d2;
+        }
+        .btnRealizarPago {
+            background-color: #aa1977;
+            color: #000000;
+            border-color: #a00978;
+            transition: box-shadow 0.3s ease;
+            box-shadow: 3px 3px 6px #a00978;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bgPink">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" style="color: #000000;">Little Light</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse show" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-10">
+                <li class="nav-item active">
+                    <a class="nav-link" href="InicioFinal.html" style="color: #000000;">Inicio</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="Login.html" style="color: #000000;">Login</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="CarritoFinal.html" style="color: #000000;">Carrito</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="ContactosFinal.html" style="color: #000000;">Contacto</a>
+                </li>
+            </ul>
+            <button class="btn btn-danger btnCerrarSesion" id="cerrarSesionBtn" onclick="cerrarSesion()">Cerrar Sesion</button>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-3">
+    <h2>Productos</h2>
+    <div class="row">
+        <div class="col-md-4 col-sm-6 mb-3">
+            <div class="card">
+                <img src="don.jpg" class="card-img-top" alt="Producto 2">
+                <div class="card-body">
+                    <h5 class="card-title">Donas glaseadas</h5>
+                    <p class="card-text">Hermosa vela de donas glaseadas.</p>
+                    <p class="card-text">Precio: $1000.00</p>
+                    <div class="input-group">
+                        <input type="number" id="cantidadProducto1" class="form-control" value="1">
+                        <button class="btn btn-primary btnAgregarCarrito" onclick="agregarProducto('Donas glaseadas', 'don.jpg', 1000.00)">Añadrir al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 mb-3">
+            <div class="card">
+                <img src="velaDeChocolate2.jpg" class="card-img-top" alt="Producto 3">
+                <div class="card-body">
+                    <h5 class="card-title">Chocolate Caliente</h5>
+                    <p class="card-text">Vela de chocolate caliente con canela.</p>
+                    <p class="card-text">Precio: $900.00</p>
+                    <div class="input-group">
+                        <input type="number" id="cantidadProducto3" class="form-control" value="1">
+                        <button class="btn btn-primary btnAgregarCarrito" onclick="agregarProducto('Chocolate Caliente', 'velaDeChocolate2.jpg', 900.00)">Añadrir al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 mb-3">
+            <div class="card">
+                <img src="ponking.jpg" class="card-img-top" alt="Calabaza con especias">
+                <div class="card-body">
+                    <h5 class="card-title">Calabaza con especias</h5>
+                    <p class="card-text">Vela de calabaza con especias.</p>
+                    <p class="card-text">Precio: $900.00</p>
+                    <div class="input-group">
+                        <input type="number" id="cantidadProducto2" class="form-control" value="1">
+                        <button class="btn btn-primary btnAgregarCarrito" onclick="agregarProducto('Calabaza con especias', 'ponking.jpg', 900.00)">Añadrir al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <h2>Carrito de Compras</h2>
+    <ul id="carrito" class="list-group">
+    </ul>
+    <p>Total: $<span id="totalCompra">0.00</span></p>
+    <button class="btn btn-danger btnVaciarCarrito" onclick="vaciarCarrito()">Vaciar Carrito</button>
+    <button class="btn btn-success btnRealizarPago" onclick="mostrarFormularioPago()">Realizar Pago</button>
+</div>
+
+<div id="formularioPago" style="display: none; margin-left: 110px; margin-right: 110px;">
+    <h3>Informacion de la Tarjeta de Credito</h3>
+    <form id="tarjetaCreditoForm">
+        <div class="mb-3">
+            <label for="nombreTitular" class="form-label">Nombre del Titular</label>
+            <input type="text" class="form-control" id="nombreTitular" autocomplete="off" required>
+        </div>
+        <div class="mb-3">
+            <label for="numeroTarjeta" class="form-label">Numero de Tarjeta</label>
+            <input type="text" class="form-control" id="numeroTarjeta" autocomplete="off" required>
+        </div>
+        <div class="mb-3">
+            <label for="fechaExpiracion" class="form-label">Fecha de Expiracion</label>
+            <input type="text" class="form-control" id="fechaExpiracion" placeholder="MM/AA" autocomplete="off" required>
+        </div>
+        <div class="mb-3">
+            <label for="codigoSeguridad" class="form-label">Codigo de Seguridad</label>
+            <input type="text" class="form-control" id="codigoSeguridad" autocomplete="off" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Realizar Pago</button>
+    </form>
+</div>
+
+<script>
+    var carrito = [];
+
+    function agregarProducto(nombreProducto, imagenProducto, precioProducto) {
+        var cantidadProducto = parseInt(document.getElementById("cantidadProducto" + (carrito.length + 1)).value);  
+        var producto = {
+            nombre: nombreProducto,
+            imagen: imagenProducto,
+            precio: precioProducto,
+            cantidad: cantidadProducto
+        };
+        carrito.push(producto);
+        mostrarCarrito();
+    }
+
+    function mostrarCarrito() {
+        var carritoList = document.getElementById("carrito");
+        carritoList.innerHTML = "";
+        var totalCompra = 0;
+
+        carrito.forEach(function (producto, index) {
+            var listItem = document.createElement("li");
+            listItem.className = "list-group-item";
+
+            var imagenProducto = document.createElement("img");
+            imagenProducto.src = producto.imagen;
+            imagenProducto.alt = producto.nombre;
+            imagenProducto.style.maxWidth = "50px";
+
+            listItem.appendChild(imagenProducto);
+            listItem.appendChild(document.createTextNode(producto.nombre + " x " + producto.cantidad + " - $" + (producto.precio * producto.cantidad).toFixed(2)));
+
+            var removeButton = document.createElement("button");
+            removeButton.className = "btn btn-danger btnEliminar float-end";
+            removeButton.textContent = "Eliminar";
+            removeButton.addEventListener("click", function () {
+                eliminarProducto(index);
+            });
+
+            listItem.appendChild(removeButton);
+            carritoList.appendChild(listItem);
+
+            totalCompra += producto.precio * producto.cantidad;
+        });
+        localStorage.setItem("totalCompra", totalCompra.toFixed(2));
+        document.getElementById("totalCompra").textContent = totalCompra.toFixed(2);
+    }
+
+    function eliminarProducto(index) {
+        carrito.splice(index, 1);
+        mostrarCarrito();
+    }
+
+    function vaciarCarrito() {
+        carrito = [];
+        mostrarCarrito();
+    }
+
+    function cerrarSesion() {
+        localStorage.removeItem("usuarioActual");
+        localStorage.removeItem("datosTarjeta"); 
+        alert("Sesion cerrada exitosamente.");
+        window.location.href = "Login.html";
+    }
+
+    function mostrarFormularioPago() {
+        if (verificarSesion()) {
+            var datosTarjeta = JSON.parse(localStorage.getItem("datosTarjeta"));
+            if (datosTarjeta) {
+                document.getElementById("nombreTitular").value = datosTarjeta.nombreTitular;
+                document.getElementById("numeroTarjeta").value = datosTarjeta.numeroTarjeta;
+                document.getElementById("fechaExpiracion").value = datosTarjeta.fechaExpiracion;
+                document.getElementById("codigoSeguridad").value = datosTarjeta.codigoSeguridad;
+            }
+            document.getElementById("formularioPago").style.display = "block";
+            document.querySelector(".btnRealizarPago").style.display = "none";
+        } else {
+            window.location.href = "Login.html";
+        }
+    }
+
+    function verificarSesion() {
+        var usuarioActual = localStorage.getItem("usuarioActual");
+        return usuarioActual !== null;
+    }
+
+    document.getElementById("tarjetaCreditoForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var nombreTitular = document.getElementById("nombreTitular").value;
+        var numeroTarjeta = document.getElementById("numeroTarjeta").value;
+        var fechaExpiracion = document.getElementById("fechaExpiracion").value;
+        var codigoSeguridad = document.getElementById("codigoSeguridad").value;
+
+        if (numeroTarjeta.length !== 16) {
+            alert("El numero de tarjeta debe tener 16 digitos.");
+            return;
+        }
+
+        if (codigoSeguridad.length !== 3) {
+            alert("El codigo de seguridad debe tener 3 digitos.");
+            return;
+        }
+
+        var datosTarjeta = {
+            nombreTitular: nombreTitular,
+            numeroTarjeta: numeroTarjeta,
+            fechaExpiracion: fechaExpiracion,
+            codigoSeguridad: codigoSeguridad
+        };
+
+        localStorage.setItem("datosTarjeta", JSON.stringify(datosTarjeta)); 
+        alert("Informacion de la tarjeta almacenados con exito.");
+        window.location.href = "ConfirmacionCompra.html";
+    });
+</script>
+
+<footer class="bg-light text-center mt-0 py-0">
+    <p>Litter Light.srl derechos reservados @2023 Bye.Maria Jiminian.</p>
+</footer>
+</body>
+</html>
